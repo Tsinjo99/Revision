@@ -1,0 +1,95 @@
+TODO LIST
+    -Bien comprendre le sujet 
+        -but
+            -Traduire le projet html en flight MVC
+            -Login utilisateur (auto login)
+            -envoye le mesaage entre utilisateur
+            -systeme de message lu et non lu
+            -boutton actualliser pour voir le nouveau message
+            
+    -Voir la Fonctionalite du projet en html
+        -scroll par page
+
+    -Traduire le index.html et messages.html en php MVC
+        view
+            -header.php
+                -copie coller du header 
+                -modifier le lien vers public img/css/js
+            -footer.php
+                copie coller du footer dans html
+            -dashboard.php
+                -include header
+                -include footer
+                -copier coller le index.html
+            -messages.php
+                -include header
+                -include footer
+                -copier coller le message.html
+        -controller
+            -DashboardController.php
+                -fonction index()
+                    -render vers views/dashboard.php
+            -MessageController.php
+                -fonction messages()
+                    -render vers view/messages.php
+        -route 
+            -DashboardController : /
+            -MessageController : /messages
+
+        -public
+            -copier coller les outils essentielle dans html :
+                css,image,js
+
+Work.. -Login utilisateur
+            -Fonctionalite 
+                - Front-end : tous les utilisateur qui veut connecter 
+                dois entrer un emai et passwd (pas d'inscription) 
+                -Back-end : lors du login un fonction verifie si un utilisaterur est dans la base 
+                    if dedans enter  else insert puis enter 
+            -Base
+                -database messages
+                    -create table user
+                        -id
+                        -email
+                        -password
+            -Model 
+            
+                -fonction getBymail :
+                    recherche le mail du l'user
+                -fonction create : 
+                    inserer le user
+                -fonction insertOrLogin : 
+                    if mail and passwd not found appeler le fonction create else login and getBymail
+            -controller
+                -AuthController
+                    -fonction login qui va traiter les requete
+                        -appeler le fonction insertOrLogin 
+                            if ok render vers /dashboard else rester dans /
+            -route 
+                - / :appeler AuthController.login
+            -view
+                -login.php
+                        -formulaire action / method post
+                    
+        -afficher tous les user !me dans la discussion et peut envoyer des message
+            -base 
+                discussion
+                    id
+                    id_me
+                    id_usr2
+                    mess 
+                    datetime
+            -model 
+                user.php
+                    getUserNotMe
+                        select user !me
+            view
+                -foreach 
+        -Chater 
+            -model
+                -fonction chater()
+                    -affiche nom,id where id =id_selected et nos message
+                        select descussion where user1=me and user2=other or urer2=me and user1=other
+            -view 
+                -affiche nom user selected and formulaire to chater 
+            
